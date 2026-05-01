@@ -1,3 +1,12 @@
+*.zip
+*.pdf
+
+# Folder
+testes/
+AE/data/
+AE/output/
+AE/entradas/
+
 # Prerequisites
 *.d
 

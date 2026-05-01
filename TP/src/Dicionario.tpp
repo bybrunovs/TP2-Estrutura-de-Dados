@@ -1,0 +1,4 @@
+namespace TADS
+{
+
+} // namespace TADS
