@@ -1,14 +1,10 @@
-#include "Grafo.h"
-#include "Dicionario.h"
-#include "No.h"
-#include "Tema.h"
-#include "Usuario.h"
-
 #include <iostream>
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <chrono>
+
+#include "RedeSocial.h"
 
 // O programa lê uma linha inicial M seguida por várias linhas de comando
 // O código principal faz parsing dessas linhas e chama os métodos

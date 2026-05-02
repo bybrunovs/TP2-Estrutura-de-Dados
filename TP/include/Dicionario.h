@@ -1,3 +1,11 @@
+/**
+ * @file Dicionario.h
+ * @author Bruno Vieira
+ * @brief TAD que faz o controle de memoria dinamica de um dicionário utilizando um vetor para armazenar os pares chave-valor
+ * @version 0.1
+ * @date 2025-05-02
+ */
+
 #include "Vector.h"
 
 namespace TADS
@@ -8,10 +16,11 @@ namespace TADS
     private:
         unsigned _capacidade;
         unsigned _tamanho;
-        Tads::Vector<T> _chaves;
-        Tads::Vector<T> _valores;
+        TADS::Vector<T> _valores;
+
     public:
-        Dicionario(/* args */);
+        Dicionario();
+        Dicionario(unsigned capacidade);
         ~Dicionario();
 
         void adicionar(const T &chave, const T &valor);
@@ -22,7 +31,6 @@ namespace TADS
         void atualizar(const T &chave, const T &novoValor);
         unsigned tamanho() const;
         bool vazio() const;
-        
 
         T &operator[](const T &chave);
         const T &operator[](const T &chave) const;

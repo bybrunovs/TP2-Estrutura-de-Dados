@@ -38,6 +38,13 @@ namespace TADS
          * @param capacidade Quantidade de elementos alocados inicialmente.
          */
         Vector(unsigned capacidade);
+        
+        /**
+         * @brief Cria um vetor com capacidade inicial e valor padrão para os elementos.
+         * @param capacidade Quantidade de elementos alocados inicialmente.
+         * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
+         */
+        Vector(unsigned capacidade, const T &valorPadrao = T());
 
         /**
          * @brief Construtor de cópia que duplica os dados do outro vetor.
