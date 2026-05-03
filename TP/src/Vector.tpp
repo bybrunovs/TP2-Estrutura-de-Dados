@@ -7,11 +7,24 @@ namespace TADS
         this->_dados = nullptr;
     }
 
-    template <typename T>
+        template <typename T>
     Vector<T>::Vector(unsigned capacidade) : _capacidade(capacidade), _tamanho(0)
     {
         // Aloca o buffer inicial com a capacidade especificada.
         this->_dados = new T[capacidade];
+
+    }
+
+    template <typename T>
+    Vector<T>::Vector(unsigned capacidade, const T &valorPadrao) : _capacidade(capacidade), _tamanho(capacidade)
+    {
+        // Aloca o buffer inicial com a capacidade especificada.
+        this->_dados = new T[capacidade];
+        // Inicializa os elementos com o valor padrão.
+        for (unsigned i = 0; i < capacidade; i++)
+        {
+            this->_dados[i] = valorPadrao;
+        }
     }
 
     template <typename T>
@@ -23,6 +36,14 @@ namespace TADS
         {
             this->_dados[i] = outro._dados[i];
         }
+    }
+
+    template <typename T>
+    Vector<T>::Vector(Vector &&outro) noexcept : _dados(outro._dados), _capacidade(outro._capacidade), _tamanho(outro._tamanho)
+    {
+        outro._dados = nullptr;
+        outro._tamanho = 0;
+        outro._capacidade = 0;
     }
 
     template <typename T>
@@ -144,15 +165,38 @@ namespace TADS
     {
         if (this != &outro)
         {
-            // Remove o buffer anterior e copia o conteúdo do outro vetor.
             delete[] _dados;
             _capacidade = outro._capacidade;
             _tamanho = outro._tamanho;
-            _dados = new T[_capacidade];
-            for (unsigned i = 0; i < _tamanho; i++)
+            if (_capacidade > 0)
             {
-                _dados[i] = outro._dados[i];
+                _dados = new T[_capacidade];
+                for (unsigned i = 0; i < _tamanho; i++)
+                {
+                    _dados[i] = outro._dados[i];
+                }
             }
+            else
+            {
+                _dados = nullptr;
+            }
+        }
+        return *this;
+    }
+
+    template <typename T>
+    Vector<T> &Vector<T>::operator=(Vector<T> &&outro) noexcept
+    {
+        if (this != &outro)
+        {
+            delete[] _dados;
+            _dados = outro._dados;
+            _capacidade = outro._capacidade;
+            _tamanho = outro._tamanho;
+
+            outro._dados = nullptr;
+            outro._tamanho = 0;
+            outro._capacidade = 0;
         }
         return *this;
     }

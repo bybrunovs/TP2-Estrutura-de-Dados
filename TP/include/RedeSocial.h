@@ -17,13 +17,41 @@ class RedeSocial
 private:
     TADS::Grafo _grafoSocial;
     TADS::Grafo _grafoTemas;
-    TADS::Dicionario<Usuario> _usuarios; //Armazena os usuários cadastrados, onde a chave é o id do usuário
-    TADS::Dicionario<Tema> _temas; //Armazena os temas cadastrados, onde a chave é o id do tema
+    TADS::Dicionario<Usuario> _usuarios; // Armazena os usuários cadastrados, onde a chave é o id do usuário
+    TADS::Dicionario<Tema> _temas;       // Armazena os temas cadastrados, onde a chave é o id do tema
 
-    TADS::Dicionario<TADS::No> _nosGrafoSocial; // Relaciona vertices do grafo social com o id do usuário, onde a chave é o id do vértice do grafo social   
-    TADS::Dicionario<TADS::No> _nosGrafoTemas; // Relaciona vertices do grafo social com o id do usuário ou tema, onde a chave é o id do vértice do grafo de temas   
+    TADS::Dicionario<TADS::No> _nosGrafoSocial; // Relaciona vertices do grafo social com o id do usuário, onde a chave é o id do vértice do grafo social
+    TADS::Dicionario<TADS::No> _nosGrafoTemas;  // Relaciona vertices do grafo social com o id do usuário ou tema, onde a chave é o id do vértice do grafo de temas
 
+    unsigned _proximoIdUsuario = 0; // Armazena o próximo id disponível para um novo usuário
+    unsigned _proximoIdTema = 0;    // Armazena o próximo id disponível para um novo
 public:
     RedeSocial();
     ~RedeSocial();
+
+    void mudarRepresentacaoGrafos(char ModoArmazenamento);
+
+    void adicionarTema(const std::string &nomeTema, char tipoTema);
+
+    void adicionarUsuario(const std::string &nomeUsuario, unsigned idadeUsuario);
+
+    void adicionarTemaUsuario(unsigned idTema);
+
+    void seguirUsuario(unsigned idSeguidor, unsigned idSeguido);
+
+    void deixarSeguirUsuario(unsigned idSeguidor, unsigned idSeguido);
+
+    void listarTemasUsuario(unsigned idUsuario);
+
+    void listarSeguidores(unsigned idUsuario);
+
+    void listarSeguidos(unsigned idUsuario);
+
+    void listarAmigos(unsigned idUsuario);
+
+    void consultarRelacaoSeguimento(unsigned idUsuario1, unsigned idUsuario2);
+
+    void verificarInteresseUsuarioTema(unsigned idUsuario, unsigned idTema);
+
+    void consultarPopularidadeTema(unsigned idTema);
 };

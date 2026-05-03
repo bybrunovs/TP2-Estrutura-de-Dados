@@ -34,14 +34,23 @@ namespace TADS
          */
         Matriz();
 
-        /**
+
+                /**
          * @brief Cria uma matriz com capacidade inicial especificada.
          * @param linhas Número de linhas da matriz.
          * @param colunas Número de colunas da matriz.
+         * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
          */
-        Matriz(unsigned linhas, unsigned colunas);
+        Matriz(unsigned linhas, unsigned colunas,  const T &valorPadrao = T());
 
-        ~Matriz();
+        /**
+         * @brief Cria uma matriz com capacidade inicial especificada.
+         * @param linhasColunas Número de linhas e colunas da matriz.
+         * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
+         */
+        Matriz(unsigned linhasColunas,  const T &valorPadrao = T());
+
+        ~Matriz() = default;
 
         /**
          * @brief Substitui o valor de um elemento existente.
@@ -70,6 +79,15 @@ namespace TADS
          * @throws std::out_of_range se os índices estiverem fora dos limites.
          */
         void redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao = T(), Dicionario<unsigned> &mapaIndices = Dicionario<unsigned>());
+
+        /**
+         * @brief Redimensiona a matriz e garante que os elementos existentes mantenham suas posições.
+         * @param novasLinhasColunas Novo número de  linhas e colunas (matriz quadrada).
+         * @param valorPadrao Valor a ser atribuído aos novos elementos.
+         * @throws std::out_of_range se os índices estiverem fora dos limites.
+         */
+        void redimensionar(unsigned novasLinhasColunas, const T &valorPadrao = T());
+
         /**
          * @brief Acesso a uma linha por índice.
          * @param indice Índice da linha.
@@ -85,6 +103,18 @@ namespace TADS
          * @throws std::out_of_range se o índice estiver fora dos limites.
          */
         const T &operator[](unsigned indice) const;
+
+        /**
+         * @brief Retorna o número de linhas da matriz.
+         * @return Número de linhas.
+         */
+        unsigned getLinhas() const;
+
+        /**
+         * @brief Retorna o número de colunas da matriz.
+         * @return Número de colunas.
+         */
+        unsigned getColunas() const;
 
         /**
          * @brief Retorna o número de elementos atualmente armazenados.

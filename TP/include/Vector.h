@@ -2,7 +2,7 @@
  * @file Vector.h
  * @author Bruno Vieira
  * @brief TAD que faz o controle de memoria dinamica de um vetor
- * @version 0.1
+ * @version 0.2
  * @date 2025-04-22
  */
 
@@ -34,17 +34,17 @@ namespace TADS
         Vector();
 
         /**
-         * @brief Cria um vetor com capacidade inicial especificada.
+         * @brief Cria um vetor com capacidade inicial e valor padrão para os elementos.
          * @param capacidade Quantidade de elementos alocados inicialmente.
          */
         Vector(unsigned capacidade);
-        
+
         /**
          * @brief Cria um vetor com capacidade inicial e valor padrão para os elementos.
          * @param capacidade Quantidade de elementos alocados inicialmente.
          * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
          */
-        Vector(unsigned capacidade, const T &valorPadrao = T());
+        Vector(unsigned capacidade, const T &valorPadrao);
 
         /**
          * @brief Construtor de cópia que duplica os dados do outro vetor.
@@ -53,11 +53,10 @@ namespace TADS
         Vector(const Vector &outro);
 
         /**
-         * @brief Atribuição profunda de outro vetor.
-         * @param outro Vetor a ser copiado.
-         * @return Referência a este vetor.
+         * @brief Construtor de movimento que transfere os dados do outro vetor.
+         * @param outro Vetor cujos dados serão movidos.
          */
-        Vector &operator=(const Vector &outro);
+        Vector(Vector &&outro) noexcept;
 
         /**
          * @brief Insere um elemento no fim do vetor.
@@ -104,6 +103,20 @@ namespace TADS
          * @return -1 se o elemento não for encontrado.
          */
         int getIndice(const T &elemento) const;
+
+        /**
+         * @brief Atribuição profunda de outro vetor.
+         * @param outro Vetor a ser copiado.
+         * @return Referência a este vetor.
+         */
+        Vector &operator=(const Vector &outro);
+
+        /**
+         * @brief Move os dados de outro vetor para este vetor.
+         * @param outro Vetor cujos dados serão movidos.
+         * @return Referência a este vetor.
+         */
+        Vector &operator=(Vector &&outro) noexcept;
 
         /**
          * @brief Acesso ao elemento por índice.

@@ -17,7 +17,7 @@ namespace TADS
     private:
         TADS::Vector<TADS::Vector<unsigned>> _ListaAdjacencias;
         TADS::Matriz<unsigned> _MatrizAdjacencia;
-        
+
         bool _edirecionada = false;
         bool _ebipartida = false;
         bool _ematrizAdjacencia = false;
@@ -26,8 +26,8 @@ namespace TADS
 
     public:
         Grafo();
-        Grafo(unsigned numVertices);
-        Grafo(unsigned numVertices, bool direcionada, bool ponderada, bool bipartida);
+        Grafo(unsigned numVertices = 0);
+        Grafo(bool direcionada =false , bool ponderada = false, bool bipartida = false, unsigned numVertices = 0);
         ~Grafo();
 
         // Métodos para manipulação de vértices
