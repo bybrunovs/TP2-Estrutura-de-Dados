@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+ #pragma once
+
 #include "No.h"
 #include "Vector.h"
 #include "Matriz.h"
@@ -31,14 +33,14 @@ namespace TADS
         ~Grafo();
 
         // Métodos para manipulação de vértices
+        void adicionarVertice();
+        void removerVertice(unsigned vertice);
+        bool existeVertice(unsigned vertice) const;
+
+        // Métodos para manipulação de Arestas
         void adicionarAresta(unsigned origem, unsigned destino);
         void removerAresta(unsigned origem, unsigned destino);
         bool existeAresta(unsigned origem, unsigned destino) const;
-
-        // Métodos para manipulação de vértices caso o grafo for bipartido
-        void adicionarAresta(unsigned origem, TipoNo tipo1, unsigned destino, TipoNo tipo2);
-        void removerAresta(unsigned origem, TipoNo tipo1, unsigned destino, TipoNo tipo2);
-        bool existeAresta(unsigned origem, TipoNo tipo1, unsigned destino, TipoNo tipo2) const;
 
         unsigned grau(unsigned vertice) const;
         unsigned numVertices() const;

@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+ #pragma once
+
 #include "Grafo.h"
 #include "Dicionario.h"
 #include "No.h"

@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+#pragma once
+
 #include "Vector.h"
 
 namespace TADS
@@ -14,8 +16,6 @@ namespace TADS
     class Dicionario
     {
     private:
-        unsigned _capacidade;
-        unsigned _tamanho;
         TADS::Vector<T> _valores;
 
     public:
@@ -23,17 +23,17 @@ namespace TADS
         Dicionario(unsigned capacidade);
         ~Dicionario();
 
-        void adicionar(const T &chave, const T &valor);
-        void remover(const T &chave);
-        bool contem(const T &chave) const;
-        T &getValor(const T &chave);
-        const T &getValor(const T &chave) const;
-        void atualizar(const T &chave, const T &novoValor);
+        void adicionar(const T &valor);
+        void remover(const unsigned &chave);
+        bool contem(const unsigned &chave) const;
+        T &getValor(const unsigned &chave);
+        const T &getValor(const unsigned &chave) const;
+        void atualizar(const unsigned &chave, const T &novoValor);
         unsigned tamanho() const;
         bool vazio() const;
 
-        T &operator[](const T &chave);
-        const T &operator[](const T &chave) const;
+        T &operator[](const unsigned &chave);
+        const T &operator[](const unsigned &chave) const;
     };
 
 } // namespace TADS

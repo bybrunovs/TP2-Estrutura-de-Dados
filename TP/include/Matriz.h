@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+#pragma once
+
 #include "Vector.h"
 #include "Dicionario.h"
 
@@ -78,7 +80,7 @@ namespace TADS
          * @param mapaIndices Dicionário para mapear os índices antigos para os novos.
          * @throws std::out_of_range se os índices estiverem fora dos limites.
          */
-        void redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao = T(), Dicionario<unsigned> &mapaIndices = Dicionario<unsigned>());
+        void redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao = T(), Dicionario<unsigned> *mapaIndices = nullptr);
 
         /**
          * @brief Redimensiona a matriz e garante que os elementos existentes mantenham suas posições.

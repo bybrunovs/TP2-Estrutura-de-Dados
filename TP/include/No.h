@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+#pragma once
+
 #include <string>
 
 namespace TADS
@@ -24,7 +26,7 @@ namespace TADS
     public:
         No();
         No(unsigned id, TipoNo tipo);
-        ~No();
+        ~No() = default;
 
         unsigned getId() const;
         TipoNo getTipo() const;

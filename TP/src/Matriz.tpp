@@ -44,7 +44,7 @@ namespace TADS
     }
 
     template <typename T>
-    void Matriz<T>::redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao, Dicionario<unsigned> &mapaIndices)
+    void Matriz<T>::redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao, Dicionario<unsigned> *mapaIndices)
     {
         Vector<T> novosDados(novasLinhas * novasColunas, valorPadrao);
 
@@ -58,12 +58,15 @@ namespace TADS
                 if (indiceAntigo < this->_dados.tamanho() && indiceNovo < novosDados.tamanho())
                 {
                     novosDados.setElemento(indiceNovo, this->_dados.getElemento(indiceAntigo));
-                    mapaIndices.adicionar(indiceAntigo, indiceNovo); // errado
+                    if (mapaIndices != nullptr)
+                    {
+                        mapaIndices->adicionar(indiceNovo);
+                    }
                 }
             }
         }
 
-        this->_dados = std::move(novosDados);
+        this->_dados = TADS::move(novosDados);
         this->_linhas = novasLinhas;
         this->_colunas = novasColunas;
     }
@@ -87,7 +90,7 @@ namespace TADS
             }
         }
 
-        this->_dados = std::move(novosDados);
+        this->_dados = TADS::move(novosDados);
         this->_linhas = novasLinhasColunas;
         this->_colunas = novasLinhasColunas;
     }

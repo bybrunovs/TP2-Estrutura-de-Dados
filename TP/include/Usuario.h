@@ -6,6 +6,8 @@
  * @date 2025-05-02
  */
 
+ #pragma once
+
 #include <string>
 
 class Usuario
@@ -18,7 +20,7 @@ private:
 public:
     Usuario();
     Usuario(unsigned id, unsigned idade, std::string nome);
-    ~Usuario();
+    ~Usuario() = default;
 
     std::string getNome() const;
     unsigned getId() const;

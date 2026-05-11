@@ -7,12 +7,11 @@ namespace TADS
         this->_dados = nullptr;
     }
 
-        template <typename T>
+    template <typename T>
     Vector<T>::Vector(unsigned capacidade) : _capacidade(capacidade), _tamanho(0)
     {
         // Aloca o buffer inicial com a capacidade especificada.
         this->_dados = new T[capacidade];
-
     }
 
     template <typename T>
@@ -211,6 +210,12 @@ namespace TADS
     unsigned Vector<T>::capacidade() const
     {
         return this->_capacidade;
+    }
+
+    template <typename T>
+    Vector<T> &&move(Vector<T> &outro) noexcept
+    {
+        return static_cast<TADS::Vector<T> &&>(outro);
     }
 
     template <typename T>
