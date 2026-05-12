@@ -6,7 +6,7 @@
  * @date 2025-05-02
  */
 
- #pragma once
+#pragma once
 
 #include "Grafo.h"
 #include "Dicionario.h"
@@ -22,8 +22,8 @@ private:
     TADS::Dicionario<Usuario> _usuarios; // Armazena os usuários cadastrados, onde a chave é o id do usuário
     TADS::Dicionario<Tema> _temas;       // Armazena os temas cadastrados, onde a chave é o id do tema
 
-    TADS::Dicionario<TADS::No> _nosGrafoSocial; // Relaciona vertices do grafo social com o id do usuário, onde a chave é o id do vértice do grafo social
-    TADS::Dicionario<TADS::No> _nosGrafoTemas;  // Relaciona vertices do grafo social com o id do usuário ou tema, onde a chave é o id do vértice do grafo de temas
+    // no grafo social o id do vertice é o id do usuário
+    TADS::Dicionario<TADS::No> _nosGrafoTemas; // Relaciona vertices do grafo social com o id do usuário ou tema, onde a chave é o id do vértice do grafo de temas
 
     unsigned _proximoIdUsuario = 0; // Armazena o próximo id disponível para um novo usuário
     unsigned _proximoIdTema = 0;    // Armazena o próximo id disponível para um novo

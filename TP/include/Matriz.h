@@ -36,21 +36,20 @@ namespace TADS
          */
         Matriz();
 
-
-                /**
+        /**
          * @brief Cria uma matriz com capacidade inicial especificada.
          * @param linhas Número de linhas da matriz.
          * @param colunas Número de colunas da matriz.
          * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
          */
-        Matriz(unsigned linhas, unsigned colunas,  const T &valorPadrao = T());
+        Matriz(unsigned linhas, unsigned colunas, const T &valorPadrao = T());
 
         /**
          * @brief Cria uma matriz com capacidade inicial especificada.
          * @param linhasColunas Número de linhas e colunas da matriz.
          * @param valorPadrao Valor a ser atribuído a cada elemento alocado.
          */
-        Matriz(unsigned linhasColunas,  const T &valorPadrao = T());
+        Matriz(unsigned linhasColunas, const T &valorPadrao = T());
 
         ~Matriz() = default;
 
@@ -88,7 +87,7 @@ namespace TADS
          * @param valorPadrao Valor a ser atribuído aos novos elementos.
          * @throws std::out_of_range se os índices estiverem fora dos limites.
          */
-        void redimensionar(unsigned novasLinhasColunas, const T &valorPadrao = T());
+        void redimensionar(unsigned novasLinhasColunas, const T &valorPadrao = T(), Dicionario<unsigned> *mapaIndices = nullptr);
 
         /**
          * @brief Acesso a uma linha por índice.

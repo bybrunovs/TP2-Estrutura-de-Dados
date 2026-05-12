@@ -8,7 +8,6 @@
 
  #pragma once
 
-#include "No.h"
 #include "Vector.h"
 #include "Matriz.h"
 namespace TADS
@@ -17,23 +16,23 @@ namespace TADS
     class Grafo
     {
     private:
-        TADS::Vector<TADS::Vector<unsigned>> _ListaAdjacencias;
-        TADS::Matriz<unsigned> _MatrizAdjacencia;
-
+        TADS::Vector<TADS::Vector<unsigned>> _listaAdjacencias;
+        TADS::Vector<TADS::Vector<unsigned>> _revListaAdjacencias; //otimizada para grafos direcionados, armazena as adjacências inversas (vértices que apontam para o vértice)
+        TADS::Matriz<bool> _matrizAdjacencia;
+        TADS::Dicionario<bool> _tipovertice; // 0 para vertice do tipo A, 1 para vertice do tipo B (apenas para grafos bipartidos)
         bool _edirecionada = false;
         bool _ebipartida = false;
-        bool _ematrizAdjacencia = false;
+        bool _ematrizAdjacencia = true;
         unsigned _numVertices;
         unsigned _numArestas;
 
     public:
         Grafo();
-        Grafo(unsigned numVertices = 0);
-        Grafo(bool direcionada =false , bool ponderada = false, bool bipartida = false, unsigned numVertices = 0);
-        ~Grafo();
+        Grafo(unsigned numVertices = 0,  bool eMatrizAdjacencia = true, bool direcionada =false, bool bipartida = false);
+        ~Grafo() = default;
 
         // Métodos para manipulação de vértices
-        void adicionarVertice();
+        void adicionarVertice(bool tipoVertice = 0); // sempre que for adicionar um vertice, verificar se a matriz/lista tem capacidade, se não tiverem, duplicar o tamanho
         void removerVertice(unsigned vertice);
         bool existeVertice(unsigned vertice) const;
 
@@ -43,6 +42,9 @@ namespace TADS
         bool existeAresta(unsigned origem, unsigned destino) const;
 
         unsigned grau(unsigned vertice) const;
+        unsigned grauEntrada(unsigned vertice) const;
+        unsigned grauSaida(unsigned vertice) const;
+
         unsigned numVertices() const;
         unsigned numArestas() const;
         void mudarRepresentacao(bool matrizAdjacencia);
