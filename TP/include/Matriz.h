@@ -72,6 +72,15 @@ namespace TADS
         T &getElemento(unsigned linha, unsigned coluna);
 
         /**
+         * @brief Retorna uma referência ao elemento na posição especificada.
+         * @param linha Linha do elemento.
+         * @param coluna Coluna do elemento.
+         * @return Referência ao elemento.
+         * @throws std::out_of_range se o índice estiver fora dos limites.
+         */
+        const T &getElemento(unsigned linha, unsigned coluna) const;
+
+        /**
          * @brief Redimensiona a matriz e garante que os elementos existentes mantenham suas posições.
          * @param novasLinhas Novo número de linhas.
          * @param novasColunas Novo número de colunas.

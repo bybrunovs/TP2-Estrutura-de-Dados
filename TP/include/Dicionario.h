@@ -21,7 +21,7 @@ namespace TADS
     public:
         Dicionario();
         Dicionario(unsigned capacidade);
-        ~Dicionario();
+        ~Dicionario() = default;
 
         void adicionar(const T &valor);
         void remover(const unsigned &chave);

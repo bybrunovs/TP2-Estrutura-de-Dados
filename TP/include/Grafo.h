@@ -10,6 +10,7 @@
 
 #include "Vector.h"
 #include "Matriz.h"
+#include "Dicionario.h"
 namespace TADS
 {
 
@@ -20,9 +21,9 @@ namespace TADS
         TADS::Vector<TADS::Vector<unsigned>> _revListaAdjacencias; //otimizada para grafos direcionados, armazena as adjacências inversas (vértices que apontam para o vértice)
         TADS::Matriz<bool> _matrizAdjacencia;
         TADS::Dicionario<bool> _tipovertice; // 0 para vertice do tipo A, 1 para vertice do tipo B (apenas para grafos bipartidos)
-        bool _edirecionada = false;
-        bool _ebipartida = false;
-        bool _ematrizAdjacencia = true;
+        bool _edirecionada;
+        bool _ebipartida;
+        bool _ematrizAdjacencia;
         unsigned _numVertices;
         unsigned _numArestas;
 
@@ -39,11 +40,11 @@ namespace TADS
         // Métodos para manipulação de Arestas
         void adicionarAresta(unsigned origem, unsigned destino);
         void removerAresta(unsigned origem, unsigned destino);
-        bool existeAresta(unsigned origem, unsigned destino) const;
+        bool existeAresta(unsigned origem, unsigned destino);
 
-        unsigned grau(unsigned vertice) const;
-        unsigned grauEntrada(unsigned vertice) const;
-        unsigned grauSaida(unsigned vertice) const;
+        unsigned grau(unsigned vertice);
+        unsigned grauEntrada(unsigned vertice);
+        unsigned grauSaida(unsigned vertice);
 
         unsigned numVertices() const;
         unsigned numArestas() const;

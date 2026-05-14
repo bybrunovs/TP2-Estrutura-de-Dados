@@ -44,6 +44,16 @@ namespace TADS
     }
 
     template <typename T>
+    const T &Matriz<T>::getElemento(unsigned linha, unsigned coluna) const
+    {
+        if (linha > this->_linhas || coluna > this->_colunas)
+        {
+            throw std::out_of_range("Índice de matriz fora dos limites");
+        }
+        return this->_dados.getElemento(linha * this->_colunas + coluna);
+    }
+
+    template <typename T>
     void Matriz<T>::redimensionar(unsigned novasLinhas, unsigned novasColunas, const T &valorPadrao, Dicionario<unsigned> *mapaIndices)
     {
         Vector<T> novosDados(novasLinhas * novasColunas, valorPadrao);
